@@ -1,12 +1,16 @@
 'use strict';
+const randomColor = require('randomcolor')
+const Stats = require('./stats');
+const { getRandomColor } = require('./utils');
+const UNKNOWN_TEXT = "Unknown";
 
-async function getCOVIDData() {
+async function getCovid19Data() {
     console.log("COVIDDDDD");
     const data = await fetch("https://api.covid19india.org/state_district_wise.json");
     return data.text();
 };
 
-getCOVIDData().then((data) => {
+getCovid19Data().then((data) => {
     if (!data) throw new Error("data is empty kindly check the endpoint");
     const rootStats = new Stats('/');
     const statsJSON = transformData(JSON.parse(data), []);
@@ -14,7 +18,7 @@ getCOVIDData().then((data) => {
     statsJSON.forEach((source) => {
         createNode(source, rootStats);
     });
-    createTile(rootStats, rootStats.data['$area']);
+    rootStats.createTile(rootStats, rootStats.data['$area']);
     console.log(rootStats);
     var event = new CustomEvent('covid-event', { detail: rootStats });
 
@@ -28,7 +32,8 @@ const transformData = (covidData, statsArray, path, colorCode) => {
         if (covidData.hasOwnProperty(data)) {
             let color = colorCode || getRandomColor();
             let eachData = covidData[data];
-            if (data === "unknown" && eachData.districtData) continue;
+            // skip any unknown data
+            if (data === UNKNOWN_TEXT && eachData.districtData) continue;
             let stats = new Stats();
             stats.setClassName(color);
             stats.setName(data);
@@ -61,13 +66,5 @@ function createNode(source, tree) {
     });
 };
 
-function createTile(node, totalSize) {
-    const size = node.data['$area'];
-    const percentage = 100.0 * size / totalSize;
-    node.name += ' • ' + `${size} confirmed cases` + ' • ' + percentage.toFixed(1) + '%';
-    node.children.forEach((eachNode) => {
-        this.createTile(eachNode, totalSize)
-    });
-};
 
 

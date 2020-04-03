@@ -52,5 +52,14 @@ class Stats {
     getClassName() {
         return this.className;
     }
+
+    createTile(node, totalSize) {
+        const size = node.data['$area'];
+        const percentage = 100.0 * size / totalSize;
+        node.name += ' • ' + `${size} confirmed cases` + ' • ' + percentage.toFixed(1) + '%';
+        node.children.forEach((eachNode) => {
+            this.createTile(eachNode, totalSize)
+        });
+    };
 }
 module.exports = Stats;

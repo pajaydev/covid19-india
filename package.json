@@ -4,7 +4,14 @@
   "main": "index.js",
   "author": "Ajaykumar Prathap",
   "license": "MIT",
+  "scripts": {
+    "build": "rollup -c",
+    "minify": "uglifyjs src/webtree.js -o dist/webtree.min.js"
+  },
   "dependencies": {
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "randomcolor": "^0.5.4",
     "rollup": "^2.2.0",
     "uglify-es": "^3.3.9"
   }
