@@ -1,8 +1,6 @@
 'use strict';
-const randomColor = require('randomcolor')
 const Stats = require('./stats');
-const { getRandomColor } = require('./utils');
-const UNKNOWN_TEXT = "Unknown";
+const { transformData, appendColor } = require('./utils');
 
 async function getCovid19Data() {
     console.log("COVIDDDDD");
@@ -19,33 +17,13 @@ getCovid19Data().then((data) => {
         createNode(source, rootStats);
     });
     rootStats.createTile(rootStats, rootStats.data['$area']);
+    appendColor(rootStats);
     console.log(rootStats);
     var event = new CustomEvent('covid-event', { detail: rootStats });
 
     // Dispatch the event
     window.dispatchEvent(event);
 });
-
-const transformData = (covidData, statsArray, path, colorCode) => {
-    const pathPrefix = path ? `${path}/` : `India/`;
-    for (let data in covidData) {
-        if (covidData.hasOwnProperty(data)) {
-            let color = colorCode || getRandomColor();
-            let eachData = covidData[data];
-            // skip any unknown data
-            if (data === UNKNOWN_TEXT && eachData.districtData) continue;
-            let stats = new Stats();
-            stats.setClassName(color);
-            stats.setName(data);
-            if (eachData.confirmed) stats.setCases(eachData.confirmed)
-            stats.setPath(`${pathPrefix}${data}`);
-            statsArray.push(stats);
-            if (eachData.districtData) transformData(eachData.districtData, statsArray, `${stats.getPath()}`, color);
-        }
-    }
-    return statsArray;
-};
-
 
 function createNode(source, tree) {
     const parts = source.path.split('/');
