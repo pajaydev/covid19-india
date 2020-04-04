@@ -3,16 +3,91 @@ body {
     height: 100%;
 }
 
+@font-face {
+    font-family: 'Gill Sans W04 Book';
+    src: url(/static/fonts/c4be5717-c19c-43a5-9ad3-b548ddf070d4.29d5f41.eot?#iefix);
+    src: url(/static/fonts/c4be5717-c19c-43a5-9ad3-b548ddf070d4.29d5f41.eot?#iefix)
+        format('eot'),
+      url(/static/fonts/4bfd13a9-3195-4d8f-87a9-83a212d18b16.a00cb26.woff2)
+        format('woff2'),
+      url(/static/fonts/63aa9f40-04be-453a-a672-aa8f9919115d.75f4b90.woff)
+        format('woff'),
+      url(/static/fonts/a82a5fb6-ad03-4675-801e-d3182a58ff5f.623b22d.ttf)
+        format('truetype'),
+      url(/static/img/beb2cee2-1a51-44ca-848f-4f795394ee5a.b8d79de.svg#beb2cee2-1a51-44ca-848f-4f795394ee5a)
+        format('svg');
+  }
+  @font-face {
+    font-family: 'GillSansW01-MediumItali';
+    src: url(/static/fonts/1f6af904-724d-4f75-b836-51c3d674a37e.1748af2.eot?#iefix);
+    src: url(/static/fonts/1f6af904-724d-4f75-b836-51c3d674a37e.1748af2.eot?#iefix)
+        format('eot'),
+      url(/static/fonts/b01b8a8a-cb45-4c4e-b2bb-e5b8853e6fe6.cc06d64.woff2)
+        format('woff2'),
+      url(/static/fonts/3e18b964-7a6f-4828-8e18-5cc698e1051f.c99c69c.woff)
+        format('woff'),
+      url(/static/fonts/a7622e06-0cde-414a-a25d-5e5f6f5bfcaa.6885c19.ttf)
+        format('truetype'),
+      url(/static/img/ca4569d2-e4c3-4dec-8bfe-52712ef6bc31.52c259e.svg#ca4569d2-e4c3-4dec-8bfe-52712ef6bc31)
+        format('svg');
+  }
+  @font-face {
+    font-family: 'Gill Sans W01 Bold';
+    src: url(/static/fonts/1a6dec8e-26f9-4243-8495-835709538f92.3939ac6.eot?#iefix);
+    src: url(/static/fonts/1a6dec8e-26f9-4243-8495-835709538f92.3939ac6.eot?#iefix)
+        format('eot'),
+      url(/static/img/b56150eb-5caa-4385-b907-373e97ddb2ff.8286231.svg#b56150eb-5caa-4385-b907-373e97ddb2ff)
+        format('svg');
+  }
+
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Gill Sans W04 Book,Helvetica,Arial,sans-serif;
     font-size: 0.8em;
     margin: 0;
     width: 800px;
-    height: 600px;
+    height: 800px;
+}
+
+h1, h2, h3 {
+    font-family: 'Gill Sans W01 Bold,Helvetica,Arial,sans-serif';
+}
+
+a, a:active, a:visited {
+    padding: 5px;
+    color: #d86f5a;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+header img {
+    width: 100px;
+    margin-right: -20px;
+}
+
+header h1 {
+   display: inline-block;
+    margin: 0px;
+    position: absolute;
+    top: 18px;
+    letter-spacing: 0.095px;
+    font-weight: bold;
+    font-size: 30px;
+    color: rgb(44, 62, 80);
+}
+
+.title {
+    height: 60px;
+}
+
+.subtitle {
+    color: #777;
+    font-size: 16px;
+    font-weight: bold;
+    margin-left: 75px;
 }
 
 #map {
-    top: 10px;
+    top: 85px;
     bottom: 10px;
     left: 10px;
     right: 10px;
@@ -30,6 +105,7 @@ body {
     font-size: 16px;
     font-weight: bold;
 }
+
 
 /* WebTreeMap CSS. */
 .webtreemap-node {
@@ -122,7 +198,7 @@ body {
 
 /* Optional: styling on node captions. */
 .webtreemap-caption {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Gill Sans W04 Book,Helvetica,Arial,sans-serif;;
     font-size: 13px;
     padding: 2px;
     text-align: center;

@@ -647,13 +647,11 @@
         if (!data) throw new Error("data is empty kindly check the endpoint");
         const rootStats = new stats('/');
         const statsJSON = transformData$1(JSON.parse(data), []);
-        console.log(statsJSON);
         statsJSON.forEach((source) => {
             createNode(source, rootStats);
         });
         rootStats.createTile(rootStats, rootStats.data['$area']);
         appendColor$1(rootStats);
-        console.log(rootStats);
         var event = new CustomEvent('covid-event', { detail: rootStats });
 
         // Dispatch the event
