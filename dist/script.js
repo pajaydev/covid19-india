@@ -639,7 +639,6 @@
     const { transformData: transformData$1, appendColor: appendColor$1 } = utils;
 
     async function getCovid19Data() {
-        console.log("COVIDDDDD");
         const data = await fetch("https://api.covid19india.org/state_district_wise.json");
         return data.text();
     }

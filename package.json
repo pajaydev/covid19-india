@@ -1,18 +1,32 @@
 {
-  "name": "covid19",
+  "name": "india-covid19-tracker",
   "version": "1.0.0",
   "main": "index.js",
   "author": "Ajaykumar Prathap",
+  "description": "India Covid 19 State and District wise Tracker",
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c",
-    "minify": "uglifyjs src/webtree.js -o dist/webtree.min.js"
+    "compile": "rollup -c",
+    "minify-webtree": "uglifyjs webtree.js -o dist/webtree.min.js",
+    "minify-script": "npm run compile && uglifyjs dist/script.js -o dist/script.min.js",
+    "build": "npm run minify-webtree && npm run minify-script"
   },
+  "keywords": [
+    "covid19",
+    "india-covid19",
+    "visualization",
+    "tracker",
+    "state-district"
+  ],
   "dependencies": {
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-node-resolve": "^7.1.1",
     "randomcolor": "^0.5.4",
     "rollup": "^2.2.0",
     "uglify-es": "^3.3.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:pajaydev/covid19.git"
   }
 }
