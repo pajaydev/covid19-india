@@ -44,7 +44,6 @@ body {
     font-family: Gill Sans W04 Book,Helvetica,Arial,sans-serif;
     font-size: 0.8em;
     margin: 0;
-    width: 800px;
     height: 800px;
 }
 
@@ -65,7 +64,7 @@ header img {
 }
 
 header h1 {
-   display: inline-block;
+    display: inline-block;
     margin: 0px;
     position: absolute;
     top: 18px;
@@ -84,6 +83,28 @@ header h1 {
     font-size: 16px;
     font-weight: bold;
     margin-left: 75px;
+    display: block;
+}
+
+.left {
+    float:left;
+}
+
+.right {
+    float: right;
+    margin: 25px;
+    display:block;
+    font-size: 16px;
+}
+
+label {
+    color: #777;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.links {
+    padding-bottom: 10px;
 }
 
 #map {
@@ -94,6 +115,7 @@ header h1 {
     position: absolute;
     cursor: pointer;
     -webkit-user-select: none;
+    margin: 0 10px;
 }
 
 .empty-text {
@@ -203,3 +225,28 @@ header h1 {
     padding: 2px;
     text-align: center;
 }
+
+/* Media queries for responsive sites */
+@media only screen and (max-width: 600px) {
+    body {
+        width: auto;
+    }
+    header img {
+        width: 90px;
+        height: 73px;
+        margin-left: -10px;
+    }
+    header h1 {
+        font-size: 18px;
+    }
+    .subtitle {
+        display: none;
+    }
+    .right {
+        display: none;
+    }
+    #map {
+        top: 75px;
+        margin: auto;
+    }
+  }
