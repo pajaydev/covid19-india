@@ -630,13 +630,17 @@
         }
     };
 
-    var utils = {
-        getRandomColor,
-        transformData,
-        appendColor
+    const extractData = (stateData) => {
+        return stateData && stateData.data && stateData.data.total;
     };
 
-    const { transformData: transformData$1, appendColor: appendColor$1 } = utils;
+    var utils = {
+        transformData,
+        appendColor,
+        extractData
+    };
+
+    const { transformData: transformData$1, appendColor: appendColor$1, extractData: extractData$1 } = utils;
 
     async function getCovid19Data() {
 
@@ -650,14 +654,14 @@
         const districtWiseData = JSON.parse(data[0]);
         const stateWiseData = JSON.parse(data[1] || []);
         const rootStats = new stats('/');
-        const statsJSON = transformData$1(JSON.parse(districtWiseData), []);
+        const statsJSON = transformData$1(districtWiseData, []);
+        const stateJSON = extractData$1(stateWiseData, []);
         statsJSON.forEach((source) => {
             createNode(source, rootStats);
         });
         rootStats.createTile(rootStats, rootStats.data['$area']);
         appendColor$1(rootStats);
-        var event = new CustomEvent('covid-event', { detail: rootStats });
-
+        const event = new CustomEvent('covid-event', { detail: { 'districtWise': rootStats, 'stateWise': stateJSON } });
         // Dispatch the event
         window.dispatchEvent(event);
     });
