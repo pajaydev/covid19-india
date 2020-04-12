@@ -1,8 +1,3 @@
-html,
-body {
-    height: 100%;
-}
-
 @font-face {
     font-family: 'Gill Sans W04 Book';
     src: url(/static/fonts/c4be5717-c19c-43a5-9ad3-b548ddf070d4.29d5f41.eot?#iefix);
@@ -44,7 +39,11 @@ body {
     font-family: Gill Sans W04 Book,Helvetica,Arial,sans-serif;
     font-size: 0.8em;
     margin: 0;
-    height: 800px;
+    height: 1200px;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 h1, h2, h3 {
@@ -108,14 +107,12 @@ label {
 }
 
 #map {
-    top: 85px;
-    bottom: 10px;
-    left: 10px;
-    right: 10px;
     position: absolute;
     cursor: pointer;
     -webkit-user-select: none;
     margin: 0 10px;
+    height: 100%;
+    width: 99%;
 }
 
 .empty-text {
@@ -127,6 +124,64 @@ label {
     font-size: 16px;
     font-weight: bold;
 }
+
+
+/* Card CSS */
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 85px;
+}
+.card {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+  }
+  
+  .cards > * {
+    padding: 10px;
+    flex: 1 100%;
+  }
+  
+  .inner-card {
+    padding: 10px;
+    color: #f9f9f9;
+    text-align: center;
+  }
+  
+  .card-number{
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  
+  .card-text {
+    font-size: 16px;
+  }
+  
+  .active {
+    background-color: orange;
+  }
+  
+  .confirmed {
+    background-color : blue;
+  }
+  
+  .recovered {
+    background-color: green
+  }
+  
+  .death {
+    background-color: rgb(241, 57, 65);
+  }
+  
+  .cards {
+    display: flex;
+    flex-direction: row;
+  }
+
 
 
 /* WebTreeMap CSS. */
