@@ -43,8 +43,12 @@ const appendColor = (stats) => {
     }
 }
 
+const extractData = (stateData) => {
+
+}
+
 module.exports = {
-    getRandomColor,
     transformData,
-    appendColor
+    appendColor,
+    extractData
 }

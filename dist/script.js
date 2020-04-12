@@ -639,13 +639,18 @@
     const { transformData: transformData$1, appendColor: appendColor$1 } = utils;
 
     async function getCovid19Data() {
+
         const data = await fetch("https://api.covid19india.org/state_district_wise.json");
-        return data.text();
+        const stateData = await fetch("https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise");
+        return await Promise.all([data.text(), stateData.text()]);
     }
     getCovid19Data().then((data) => {
-        if (!data) throw new Error("data is empty kindly check the endpoint");
+
+        if (!data || !data.length) throw new Error("data is empty kindly check the endpoint");
+        const districtWiseData = JSON.parse(data[0]);
+        const stateWiseData = JSON.parse(data[1] || []);
         const rootStats = new stats('/');
-        const statsJSON = transformData$1(JSON.parse(data), []);
+        const statsJSON = transformData$1(JSON.parse(districtWiseData), []);
         statsJSON.forEach((source) => {
             createNode(source, rootStats);
         });

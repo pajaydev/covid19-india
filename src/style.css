@@ -3,12 +3,8 @@
     src: url(/static/fonts/c4be5717-c19c-43a5-9ad3-b548ddf070d4.29d5f41.eot?#iefix);
     src: url(/static/fonts/c4be5717-c19c-43a5-9ad3-b548ddf070d4.29d5f41.eot?#iefix)
         format('eot'),
-      url(/static/fonts/4bfd13a9-3195-4d8f-87a9-83a212d18b16.a00cb26.woff2)
-        format('woff2'),
       url(/static/fonts/63aa9f40-04be-453a-a672-aa8f9919115d.75f4b90.woff)
         format('woff'),
-      url(/static/fonts/a82a5fb6-ad03-4675-801e-d3182a58ff5f.623b22d.ttf)
-        format('truetype'),
       url(/static/img/beb2cee2-1a51-44ca-848f-4f795394ee5a.b8d79de.svg#beb2cee2-1a51-44ca-848f-4f795394ee5a)
         format('svg');
   }
@@ -133,6 +129,7 @@ label {
     height: 100%;
     position: absolute;
     top: 85px;
+    padding: 0 15px;
 }
 .card {
     display: flex;

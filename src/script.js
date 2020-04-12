@@ -1,22 +1,28 @@
 'use strict';
 const Stats = require('./stats');
-const { transformData, appendColor } = require('./utils');
+const { transformData, appendColor, extractData } = require('./utils');
 
 async function getCovid19Data() {
+
     const data = await fetch("https://api.covid19india.org/state_district_wise.json");
-    return data.text();
+    const stateData = await fetch("https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise");
+    return await Promise.all([data.text(), stateData.text()]);
 };
 
 getCovid19Data().then((data) => {
-    if (!data) throw new Error("data is empty kindly check the endpoint");
+
+    if (!data || !data.length) throw new Error("data is empty kindly check the endpoint");
+    const districtWiseData = JSON.parse(data[0]);
+    const stateWiseData = JSON.parse(data[1] || []);
     const rootStats = new Stats('/');
-    const statsJSON = transformData(JSON.parse(data), []);
+    const statsJSON = transformData(districtWiseData, []);
+    const stateJSON = extractData(stateWiseData, []);
     statsJSON.forEach((source) => {
         createNode(source, rootStats);
     });
     rootStats.createTile(rootStats, rootStats.data['$area']);
     appendColor(rootStats);
-    var event = new CustomEvent('covid-event', { detail: rootStats });
+    const event = new CustomEvent('covid-event', { detail: rootStats });
 
     // Dispatch the event
     window.dispatchEvent(event);
