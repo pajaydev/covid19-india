@@ -16,7 +16,10 @@
     "india-covid19",
     "visualization",
     "tracker",
-    "state-district"
+    "state-district",
+    "realtime-tracker",
+    "india-corona",
+    "corona-cases"
   ],
   "dependencies": {
     "@rollup/plugin-commonjs": "^11.0.2",
