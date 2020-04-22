@@ -1,4 +1,5 @@
 'use strict';
+const { formatNumber } = require('./utils');
 class Stats {
     constructor(name) {
         this.name = name;
@@ -56,7 +57,7 @@ class Stats {
     createTile(node, totalSize) {
         const size = node.data['$area'];
         const percentage = 100.0 * size / totalSize;
-        node.name += ' • ' + `${size} confirmed cases` + ' • ' + percentage.toFixed(1) + '%';
+        node.name += ' • ' + `${formatNumber(size)} confirmed cases` + ' • ' + percentage.toFixed(1) + '%';
         node.children.forEach((eachNode) => {
             this.createTile(eachNode, totalSize)
         });

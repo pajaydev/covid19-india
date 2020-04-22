@@ -1,6 +1,6 @@
 'use strict';
 const Stats = require('./stats');
-const { transformData, appendColor, extractData, formatNumbers } = require('./utils');
+const { transformData, appendColor, extractData } = require('./utils');
 
 async function getCovid19Data() {
     const data = await fetch("https://api.covid19india.org/state_district_wise.json");
